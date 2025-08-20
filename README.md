@@ -95,6 +95,14 @@ text_prompt = """
 audio_array = generate_audio(text_prompt)
 ```
 [suno_korean.webm](https://user-images.githubusercontent.com/32879321/235313033-dc4477b9-2da0-4b94-9c8b-a8c2d8f5bb5e.webm)
+
+```python
+text_prompt = """
+    Halo, selamat pagi. Nama saya Bark dan saya sekarang mendukung bahasa Indonesia.
+    [tertawa] Ini sangat menyenangkan!
+"""
+audio_array = generate_audio(text_prompt, history_prompt="id_speaker_pria")
+```
   
 *Note: since Bark recognizes languages automatically from input text, it is possible to use, for example, a german history prompt with english text. This usually leads to english audio with a german accent.*
 ```python
@@ -142,6 +150,21 @@ audio_array = generate_audio(text_prompt, history_prompt="v2/en_speaker_1")
 ```
 
 [sloth.webm](https://user-images.githubusercontent.com/5068315/230684883-a344c619-a560-4ff5-8b99-b4463a34487b.webm)
+
+### Bahasa Indonesia Voice Presets
+
+Bark now supports Indonesian language with multiple speaker presets:
+
+```python
+# Speaker pria Indonesia
+audio_array = generate_audio("Halo, selamat pagi", history_prompt="id_speaker_pria")
+
+# Speaker wanita Indonesia  
+audio_array = generate_audio("Halo, selamat pagi", history_prompt="id_speaker_wanita")
+```
+
+For more information about Indonesian language support, see [INDONESIAN_SUPPORT.md](INDONESIAN_SUPPORT.md).
+
 </details>
 
 ### 📃 Generating Longer Audio
@@ -177,6 +200,16 @@ or
 git clone https://github.com/suno-ai/bark
 cd bark && pip install . 
 ```
+
+### Indonesian Language Support
+
+For Indonesian language support, additional dependencies are required:
+
+```bash
+pip install librosa>=0.10.0 soundfile>=0.12.0
+```
+
+The Indonesian MMS-TTS model will be automatically downloaded when first used.
 
 
 ## 🤗 Transformers Usage
@@ -266,6 +299,7 @@ Below is a list of some known non-speech sounds, but we are finding more every d
 | Spanish (es) | ✅ |
 | French (fr) | ✅ |
 | Hindi (hi) | ✅ |
+| **Indonesian (id)** | **✅** |
 | Italian (it) | ✅ |
 | Japanese (ja) | ✅ |
 | Korean (ko) | ✅ |
@@ -283,6 +317,7 @@ Requests for future language support [here](https://github.com/suno-ai/bark/disc
 - [EnCodec](https://github.com/facebookresearch/encodec) for a state-of-the-art implementation of a fantastic audio codec
 - [AudioLM](https://github.com/lucidrains/audiolm-pytorch) for related training and inference code
 - [Vall-E](https://arxiv.org/abs/2301.02111), [AudioLM](https://arxiv.org/abs/2209.03143) and many other ground-breaking papers that enabled the development of Bark
+- [Facebook MMS-TTS](https://huggingface.co/facebook/mms-tts) for the Indonesian language model
 
 ## © License
 
@@ -304,6 +339,8 @@ If you are interested, you can sign up for early access [here](https://suno-ai.t
 #### How do I specify where models are downloaded and cached?
 * Bark uses Hugging Face to download and store models. You can see find more info [here](https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfhome). 
 
+#### How do I use Indonesian language support?
+* Indonesian language support is automatically available when you install the additional dependencies (`librosa` and `soundfile`). When you generate audio with Indonesian text or use an Indonesian speaker preset, the MMS-TTS model for Indonesian will be automatically downloaded and used.
 
 #### Bark's generations sometimes differ from my prompts. What's happening?
 * Bark is a GPT-style model. As such, it may take some creative liberties in its generations, resulting in higher-variance model outputs than traditional text-to-speech approaches.
