@@ -163,8 +163,6 @@ audio_array = generate_audio("Halo, selamat pagi", history_prompt="id_speaker_pr
 audio_array = generate_audio("Halo, selamat pagi", history_prompt="id_speaker_wanita")
 ```
 
-For more information about Indonesian language support, see [INDONESIAN_SUPPORT.md](INDONESIAN_SUPPORT.md).
-
 </details>
 
 ### 📃 Generating Longer Audio
