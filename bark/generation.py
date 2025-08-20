@@ -58,6 +58,7 @@ SUPPORTED_LANGS = [
     ("Spanish", "es"),
     ("French", "fr"),
     ("Hindi", "hi"),
+    ("Indonesian", "id"),
     ("Italian", "it"),
     ("Japanese", "ja"),
     ("Korean", "ko"),
